@@ -1,0 +1,45 @@
+import torch
+import torch.nn as nn
+import torch.nn.functional as F
+
+class SimpleCNN(nn.Module):
+    def __init__(self):
+        super().__init__()
+        # 1. Convolutional Layers
+        # Input: 3 color channels (RGB), Output: 16 filters, Filter size: 3x3
+        self.conv1 = nn.Conv2d(in_channels=3, out_channels=16, kernel_size=3, padding=1)
+        # Input: 16 channels, Output: 32 filters, Filter size: 3x3
+        self.conv2 = nn.Conv2d(in_channels=16, out_channels=32, kernel_size=3, padding=1)
+        
+        # 2. Pooling Layer (shrinks height and width by half)
+        self.pool = nn.MaxPool2d(kernel_size=2, stride=2)
+        
+        # 3. Fully Connected Layers
+        # After two 2x2 pooling layers, a 32x32 image shrinks to 8x8
+        self.fc1 = nn.Linear(32 * 8 * 8, 128)
+        self.fc2 = nn.Linear(128, 10)  # 10 output classes (e.g., cat, dog, car)
+
+    def forward(self, x):
+        # Pass through Conv 1 -> ReLU -> Max Pooling (32x32 -> 16x16)
+        x = self.pool(F.relu(self.conv1(x)))
+        
+        # Pass through Conv 2 -> ReLU -> Max Pooling (16x16 -> 8x8)
+        x = self.pool(F.relu(self.conv2(x)))
+        
+        # Flatten the 3D feature maps into a 1D list of numbers
+        x = torch.flatten(x, start_dim=1)
+        
+        # Pass through Fully Connected layers for final prediction
+        x = F.relu(self.fc1(x))
+        x = self.fc2(x)
+        return x
+
+# --- Quick Test with Dummy Image Data ---
+model = SimpleCNN()
+
+# Create a fake batch of 4 RGB images, each 32x32 pixels
+dummy_images = torch.randn(4, 3, 32, 32)
+
+# Run the images through the network
+predictions = model(dummy_images)
+print("Output shape:", predictions.shape)  # Output: torch.Size([4, 10])
