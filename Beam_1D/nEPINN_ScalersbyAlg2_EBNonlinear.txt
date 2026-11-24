@@ -1,0 +1,23 @@
+- q = 1:
+U = np.float64([5e4*4e-8/0.001266*1e-2])
+Phi = np.float64([1e-2])
+
+- q = 2:
+U = np.float64([5e4*1.73e-7/0.002531*1e-2])
+Phi = np.float64([1e-2])
+
+- q = 4:
+U = np.float64([5e4*6.917e-7/0.005061*1e-2])
+Phi = np.float64([1e-2])
+
+- q = 6:
+U = np.float64([5e4*1.555e-6/0.007588*1e-2])
+Phi = np.float64([1e-2])
+
+- q = 8:
+U = np.float64([5e4*2.762e-6/0.0101*1e-2])
+Phi = np.float64([1e-2])
+
+- q = 10:
+U = np.float64([5e4*4.309e-6/0.0126*1e-2])
+Phi = np.float64([1e-2])

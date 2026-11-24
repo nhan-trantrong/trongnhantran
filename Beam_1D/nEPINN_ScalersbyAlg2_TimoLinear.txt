@@ -1,0 +1,27 @@
+- q = 1e-3:
+U = np.float64([5e0*5.3e-8/2.7e-7*1e-2])
+Phi = np.float64([1e-2])
+
+- q = 1e-2:
+U = np.float64([5e0*5.3e-7/2.7e-6*1e-2])
+Phi = np.float64([1e-2])
+
+- q = 1e-1:
+U = np.float64([5e0*5.3e-6/2.7e-5*1e-2])
+Phi = np.float64([1e-2])
+
+- q = 1e0:
+U = np.float64([5e0*5.3e-5/2.7e-4*1e-2])
+Phi = np.float64([1e-2])
+
+- q = 1e1:
+U = np.float64([5e0*5.3e-4/2.7e-3*1e-2])
+Phi = np.float64([1e-2])
+
+- q = 1e2:
+U = np.float64([5e0*5.3e-3/2.7e-2*1e-2])
+Phi = np.float64([1e-2])
+
+- q = 1e3:
+U = np.float64([5e0*5.3e-2/2.7e-1*1e-2])
+Phi = np.float64([1e-2])
